@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        /* General Page Styling */
+        body {
+            background-color: black; /* Black background */
+            color: #E0E0E0;
+            font-size: 26px; /* Font size 26 */
+            font-family: Tahoma; /* Font family Tahoma */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the content */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: green; /* H1 color green */
+            text-align: center;
+            font-size: 36px;
+        }
+
+        p {
+            margin-left: 50px; /* Paragraph margin-left 50px */
+            margin-top: 20px;
+        }
+
+        hr {
+            border: 1px solid yellow; /* HR color yellow */
+            margin: 20px 0;
+        }
+
+        /* Styling for the "Learn More" link */
+        .learn-more {
+            color: blue; /* Blue by default */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .learn-more:hover {
+            color: #00BFFF; /* Lighter blue on hover */
+        }
+
+        /* Welcome message styling */
+        .welcome-message {
+            background-color: #2A2A2A;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome! We hope you find everything you're looking for and more.</h1>
+        <div id="welcomeMessage" class="welcome-message"></div>
+        <hr>
+        <p>
+            We’re thrilled to have you here, take a look around! Your presence makes our website brighter. Enjoy exploring
+          <div style="text-align: center;">
+            <a href="#" class="learn-more" id="learnMoreLink">Learn More</a> </div> 
+        </p>
+    </div>
+
+    <script>
+        // Ask for the visitor's name and display a welcome message.
+        const visitorName = prompt("Welcome! Please enter your name:");
+        const welcomeMessageElement = document.getElementById("welcomeMessage");
+
+        if (visitorName) {
+            welcomeMessageElement.textContent = `Hello, ${visitorName}! We're glad to have you here.`;
+        } else {
+            welcomeMessageElement.textContent = "Hello! We're glad to have you here.";
+        }
+
+        // Change the link color to green when it is clicked.
+        const learnMoreLink = document.getElementById('learnMoreLink');
+        learnMoreLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            learnMoreLink.style.color = 'green'; // Change the color to green
+        });
+    </script>
+</body>
+</html>

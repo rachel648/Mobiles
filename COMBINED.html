@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks and Currency Converter</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p, div {
+      font-size: 18px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    #conversionResult, #names, #studentMarks {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      input, button {
+        width: 90%;
+      }
+    }
+  </style>
+  <script>
+    // Function to convert KES to USD
+    function convertCurrency() {
+      var ksh = document.getElementById("kshInput").value;
+      if (ksh) {
+        var usd = ksh / 115; // Rate: 1 USD = 115 Ksh
+        document.getElementById("conversionResult").innerHTML = ksh + " KES is equivalent to " + usd.toFixed(2) + " USD";
+      } else {
+        document.getElementById("conversionResult").innerHTML = "Please enter an amount in KES.";
+      }
+    }
+
+    // Function to display 10 student names
+    function displayStudentNames() {
+      var studentNames = ["John", "Mary", "Peter", "Sara", "Ahmed", "Lucy", "Michael", "Linda", "James", "Anna"];
+      var output = "";
+      for (var i = 0; i < studentNames.length; i++) {
+        output += studentNames[i] + "<br>";
+      }
+      document.getElementById("names").innerHTML = output;
+    }
+
+    // Function to display student names and their marks
+    function displayStudentMarks() {
+      var studentNames = ["John", "Mary", "Peter", "Sara", "Ahmed", "Lucy", "Michael", "Linda", "James", "Anna"];
+      var marks = [85, 78, 92, 66, 89, 74, 81, 95, 68, 72]; // Example marks for 10 students
+      var output = "";
+      for (var i = 0; i < studentNames.length; i++) {
+        output += "Name: " + studentNames[i] + ", Marks: " + marks[i] + "<br>";
+      }
+      document.getElementById("studentMarks").innerHTML = output;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Marks and Currency Converter</h1>
+
+    <!-- Section 1: KES to USD Converter -->
+    <h2>Kenyan Shillings to US Dollars Converter</h2>
+    <input type="number" id="kshInput" placeholder="Enter amount in KES" />
+    <button onclick="convertCurrency()">Convert</button>
+    <div id="conversionResult"></div>
+
+    <!-- Section 2: Display Student Names -->
+    <h2>List of 10 Students</h2>
+    <button onclick="displayStudentNames()">Display Students</button>
+    <div id="names"></div>
+
+    <!-- Section 3: Display Student Marks -->
+    <h2>Students and Their Marks</h2>
+    <button onclick="displayStudentMarks()">Display Students and Marks</button>
+    <div id="studentMarks"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KES to USD Converter</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #007bff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p#result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #28a745;
+    }
+  </style>
+  
+  <script>
+    function convertCurrency() {
+      var ksh = document.getElementById("kshInput").value;
+      var usd = ksh / 115; // Rate: 1 USD = 115 Ksh
+      document.getElementById("result").innerHTML = ksh + " KES is equivalent to " + usd.toFixed(2) + " USD";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Kenyan Shillings to US Dollars Converter</h2>
+    <input type="number" id="kshInput" placeholder="Enter amount in KES" />
+    <button onclick="convertCurrency()">Convert</button>
+    <p id="result"></p>
+  </div>
+</body>
+</html>

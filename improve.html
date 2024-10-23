@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students and Marks</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #007bff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e9ecef;
+    }
+  </style>
+  <script>
+    function displayStudentMarks() {
+      var studentNames = ["John", "Mary", "Peter", "Sara", "Ahmed", "Lucy", "Michael", "Linda", "James", "Anna"];
+      var marks = [85, 78, 92, 66, 89, 74, 81, 95, 68, 72]; // Example marks for 10 students
+      var output = "<table><tr><th>Student Name</th><th>Marks</th></tr>";
+      
+      for (var i = 0; i < studentNames.length; i++) {
+        output += "<tr><td>" + studentNames[i] + "</td><td>" + marks[i] + "</td></tr>";
+      }
+      output += "</table>";
+      
+      document.getElementById("studentMarks").innerHTML = output;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Students and Their Marks</h2>
+    <button onclick="displayStudentMarks()">Display Students and Marks</button>
+    <div id="studentMarks"></div>
+  </div>
+</body>
+</html>

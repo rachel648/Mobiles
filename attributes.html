@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<h1>Demonstrating change of attributes using bulb</h1>
+
+
+<!-- This button has an onclick event, which triggers JavaScript code to execute when the button is clicked.
+
+ document.getElementById('myImage') targets the <img> element with the ID myImage.
+
+.src = 'on.jpg' changes the src attribute of the image to "on.jpg," simulating the light being turned on.   -->
+
+<button onclick="document.getElementById('myImage').src= 'on.jpg'">Turn on the light</button>
+
+<!--This is the image representing the light bulb.
+
+The id="myImage" attribute assigns a unique identifier to the image, allowing JavaScript to target it.
+
+The src="off.jpg" attribute specifies the default image as "off.jpg," simulating the bulb being off.-->
+
+<img id = 'myImage' src="off.jpg" style="width: 100px;">
+
+<!--This button also uses an onclick event to trigger JavaScript.
+
+document.getElementById('myImage').src='off.jpg' changes the src of the myImage element back to "off.jpg," turning the light off.-->
+
+<button  onclick="document.getElementById('myImage').src='off.jpg'">Turn off the lights</button>
+
+
+
+
+
+
+
+
+
+</html>

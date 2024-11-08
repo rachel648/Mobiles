@@ -1,0 +1,73 @@
+<html>
+<title> prac </title>
+
+<link rel="stylesheet" href="sidebar.css">
+
+<head> </head>
+<body>
+
+<div class="sidebar"  id="sidebar">
+
+<div class="logo">  </div>
+
+<h2>IMS</h2>
+
+<!-- Profile Section -->
+<div class="profile">
+    <img src="profile.jpg" alt="User Profile" class="profile-img">
+    <p class="username">Gomez</p>
+</div>
+
+ <!-- Navigation Links -->
+  <ul class = "nav-links">
+    <li class="nav_item active">
+      <a href="dashboard">
+        <span class="icon">📊</span>
+        <span class="text">Dashboard</span>
+      </li>
+
+      <li class="nav_item active">
+      <a href="dashboard">
+        <span class="icon">📊</span>
+        <span class="text">Dashboard</span>
+      </li>
+
+
+      </a>
+      <li class="nav-item">
+        <a href="#settings">
+            <span class="icon">⚙️</span>
+            <span class="text">Settings</span>
+        </a>
+    </li>
+
+  </ul>
+
+</div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Toggle Button for Sidebar -->
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div class="content">
+          <!-- Main content goes here -->
+      </div>
+  </div>
+
+</body>
+
+<script type ="text/javascript">
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.querySelector(".main-content");
+
+    // Toggle the collapsed class on sidebar and main content
+    sidebar.classList.toggle("collapsed");
+    mainContent.classList.toggle("collapsed");
+}
+
+
+</script>
+
+</html>

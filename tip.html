@@ -1,0 +1,44 @@
+<html>
+<title>CONVERTION</title>
+
+<head>
+
+    <script>
+
+    function convert() {
+
+        let userInput =document.getElementById("amount").value;
+
+        let calc = 1 / 115; // Conversion rate
+        let dollars = userInput * calc;
+
+        alert("The equivalent in dollars is: $" + dollars);
+
+        }
+         
+
+    </script>
+
+
+</head>
+<body>
+    <h1>Convert Kenyan Shillings to US Dollars</h1>
+
+    <!-- Input for Kenyan Shillings -->
+    <input type="text" id="amount" name="amount" placeholder="Enter amount in Ksh">
+    
+    <!-- Button to trigger the conversion -->
+    <input type="button" id="convert" value="Convert" onclick="convert()">
+
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grades</title>
+    <style>
+        /* Style the body for a clean background */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Title styling */
+        h2 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        /* Table header styling */
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Style each row with alternating colors */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Input field styling */
+        input[type="text"], input[type="number"] {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        input[type="number"] {
+            appearance: textfield; /* remove up/down arrows in number fields */
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Hover effect for rows */
+        tr:hover {
+            background-color: #f1f9ff;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Style the results cells */
+        #studentTable td[id^="totalScore_"], #studentTable td[id^="grade_"] {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Enter Student Marks</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Assignment 1 (0-100)</th>
+            <th>Assignment 2 (0-100)</th>
+            <th>CAT (0-100)</th>
+            <th>Final Exam (0-100)</th>
+            <th>Total Score</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody id="studentTable">
+        <!-- 20 rows for students will be generated here -->
+    </tbody>
+</table>
+
+<button onclick="calculateGrades()">Calculate Grades</button>
+
+<script>
+// Generate 20 rows for student entries
+function generateTableRows() {
+    const tableBody = document.getElementById("studentTable");
+    for (let i = 1; i <= 20; i++) {
+        let row = `
+            <tr>
+                <td><input type="text" id="name${i}" placeholder="Student ${i}"></td>
+                <td><input type="number" id="assignment1_${i}" min="0" max="100" placeholder="0-100"></td>
+                <td><input type="number" id="assignment2_${i}" min="0" max="100" placeholder="0-100"></td>
+                <td><input type="number" id="cat_${i}" min="0" max="100" placeholder="0-100"></td>
+                <td><input type="number" id="finalExam_${i}" min="0" max="100" placeholder="0-100"></td>
+                <td id="totalScore_${i}">-</td>
+                <td id="grade_${i}">-</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    }
+}
+
+// Calculate grades and display results in the table
+function calculateGrades() {
+    try {
+        for (let i = 1; i <= 20; i++) {
+            // Retrieve input values
+            let name = document.getElementById(`name${i}`).value;
+            let assignment1 = parseFloat(document.getElementById(`assignment1_${i}`).value);
+            let assignment2 = parseFloat(document.getElementById(`assignment2_${i}`).value);
+            let cat = parseFloat(document.getElementById(`cat_${i}`).value);
+            let finalExam = parseFloat(document.getElementById(`finalExam_${i}`).value);
+
+            // Validate inputs
+            if (!name) throw `Student ${i}'s name is missing.`;
+            if (isNaN(assignment1) || assignment1 < 0 || assignment1 > 100) throw `Assignment 1 score for Student ${i} must be between 0 and 100.`;
+            if (isNaN(assignment2) || assignment2 < 0 || assignment2 > 100) throw `Assignment 2 score for Student ${i} must be between 0 and 100.`;
+            if (isNaN(cat) || cat < 0 || cat > 100) throw `CAT score for Student ${i} must be between 0 and 100.`;
+            if (isNaN(finalExam) || finalExam < 0 || finalExam > 100) throw `Final Exam score for Student ${i} must be between 0 and 100.`;
+
+            // Calculate total score and grade
+            let totalScore = assignment1 * 0.1 + assignment2 * 0.1 + cat * 0.3 + finalExam * 0.5;
+            let grade = calculateGrade(totalScore);
+
+            // Display total score and grade in the table
+            document.getElementById(`totalScore_${i}`).innerText = totalScore.toFixed(2);
+            document.getElementById(`grade_${i}`).innerText = grade;
+        }
+    } catch (error) {
+        alert("Error: " + error);
+    }
+}
+
+// Helper function to determine grade based on total score
+function calculateGrade(totalScore) {
+    if (totalScore >= 70) return 'A';
+    if (totalScore >= 60) return 'B';
+    if (totalScore >= 50) return 'C';
+    if (totalScore >= 40) return 'D';
+    return 'F';
+}
+
+// Generate table rows on page load
+generateTableRows();
+</script>
+
+</body>
+</html>

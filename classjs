@@ -1,0 +1,13 @@
+// Define an array of car names
+var mycars = ["Saab", "Volvo", "BMW", "Probox", "Lamborghini", "Hummer"];
+
+// Iterate through each element in the array using a for...of loop
+for (var car of mycars) {
+    // Output each car name to the console
+    console.log(car);
+}
+
+// Alternatively, you can use a for loop like this:
+// for (var i = 0; i < mycars.length; i++) {
+//     console.log(mycars[i]);
+// }
